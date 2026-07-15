@@ -1,64 +1,87 @@
 import streamlit as st
 
+# ==========================================
+# PAGE CONFIG
+# ==========================================
+
 st.set_page_config(
-    page_title="Fake Review Detection",
+    page_title="Fake Product Review Detection",
     page_icon="🛒",
     layout="wide"
 )
 
-# ==========================
-# Custom CSS
-# ==========================
+# ==========================================
+# CUSTOM CSS
+# ==========================================
 
 st.markdown("""
 <style>
 
-.big-title{
-    font-size:46px;
+.block-container{
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+
+/* Hero */
+
+.title{
+    font-size:44px;
     font-weight:700;
-    color:white;
+    color:#1F2937;
 }
 
-.sub-title{
-    font-size:22px;
-    color:#4da3ff;
+.subtitle{
+    font-size:24px;
     font-weight:600;
+    color:#2563EB;
 }
 
-.desc{
-    color:#B8BCC8;
+.description{
     font-size:17px;
+    color:#4B5563;
 }
 
-.metric-box{
-    background-color:#1d2330;
+/* Card */
+
+.card{
+    background:white;
+    border:1px solid #E5E7EB;
     border-radius:15px;
-    padding:20px;
-    text-align:center;
-    border:1px solid #31394b;
+    padding:22px;
+    box-shadow:0px 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:20px;
 }
 
-.metric-title{
-    color:#9aa4b3;
-    font-size:15px;
+.card-title{
+    font-size:16px;
+    color:#6B7280;
 }
 
-.metric-value{
+.card-value{
     font-size:28px;
     font-weight:bold;
-    color:white;
+    color:#111827;
+    margin-top:8px;
+}
+
+.section-title{
+    font-size:30px;
+    font-weight:700;
+    color:#1F2937;
+    text-align:center;
+    margin:20px 0px;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ==========================
-# Hero Section
-# ==========================
+# ==========================================
+# HERO SECTION
+# ==========================================
 
 st.markdown(
 """
-<div class='big-title'>
+<div class="title">
 🛒 Fake Product Review Detection System
 </div>
 """,
@@ -67,7 +90,7 @@ unsafe_allow_html=True
 
 st.markdown(
 """
-<div class='sub-title'>
+<div class="subtitle">
 Detect Fake Product Reviews using Machine Learning
 </div>
 """,
@@ -76,9 +99,10 @@ unsafe_allow_html=True
 
 st.markdown(
 """
-<div class='desc'>
-Analyze individual reviews or entire CSV files using an NLP-based Machine Learning model.
-Generate interactive analytics, confidence scores and downloadable reports in seconds.
+<div class="description">
+Identify whether online product reviews are Genuine or Fake using Natural Language Processing (NLP)
+and Machine Learning. The system supports both individual review prediction and bulk CSV analysis,
+along with interactive analytics and downloadable reports.
 </div>
 """,
 unsafe_allow_html=True
@@ -87,166 +111,168 @@ unsafe_allow_html=True
 st.write("")
 st.divider()
 
-# ==========================
-# Statistics
-# ==========================
-
-c1,c2,c3,c4 = st.columns(4)
-
-with c1:
-    st.markdown("""
-    <div class="metric-box">
-        <div class="metric-title">Accuracy</div>
-        <div class="metric-value">73.48%</div>
-    </div>
-    """,unsafe_allow_html=True)
-
-with c2:
-    st.markdown("""
-    <div class="metric-box">
-        <div class="metric-title">Algorithm</div>
-        <div class="metric-value">Logistic Regression</div>
-    </div>
-    """,unsafe_allow_html=True)
-
-with c3:
-    st.markdown("""
-    <div class="metric-box">
-        <div class="metric-title">Vectorizer</div>
-        <div class="metric-value">TF-IDF</div>
-    </div>
-    """,unsafe_allow_html=True)
-
-with c4:
-    st.markdown("""
-    <div class="metric-box">
-        <div class="metric-title">Dataset</div>
-        <div class="metric-value">Amazon Reviews</div>
-    </div>
-    """,unsafe_allow_html=True)
-
-st.divider()
-
-# ======================================================
-# FEATURE MODULES
-# ======================================================
+# ==========================================
+# MODEL SUMMARY
+# ==========================================
 
 st.markdown(
 """
-<h2 style='text-align:center;'>
-🚀 Application Modules
-</h2>
+<div class="section-title">
+📈 Model Summary
+</div>
 """,
 unsafe_allow_html=True
 )
 
-col1, col2 = st.columns(2, gap="large")
-
-# ------------------ Card 1 ------------------
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-
     st.markdown("""
-    <div style="
-        background:#1d2330;
-        padding:25px;
-        border-radius:15px;
-        border-left:6px solid #00C853;
-        margin-bottom:20px;
-    ">
-    <h3>✍️ Single Review Prediction</h3>
-
-    Predict whether an individual review is
-    <b>Genuine</b> or <b>Fake</b> instantly.
-
-    <br><br>
-
-    ✅ Instant Prediction<br>
-    ✅ Confidence Score<br>
-    ✅ Cleaned Review
+    <div class="card">
+        <div class="card-title">Accuracy</div>
+        <div class="card-value">73.48%</div>
     </div>
     """, unsafe_allow_html=True)
-
-# ------------------ Card 2 ------------------
 
 with col2:
-
     st.markdown("""
-    <div style="
-        background:#1d2330;
-        padding:25px;
-        border-radius:15px;
-        border-left:6px solid #2979FF;
-        margin-bottom:20px;
-    ">
-    <h3>📂 Bulk CSV Prediction</h3>
-
-    Upload a CSV containing hundreds of
-    product reviews.
-
-    <br><br>
-
-    ✅ Batch Prediction<br>
-    ✅ CSV Download<br>
-    ✅ Progress Tracking
+    <div class="card">
+        <div class="card-title">Algorithm</div>
+        <div class="card-value">Logistic Regression</div>
     </div>
     """, unsafe_allow_html=True)
 
-# ------------------ Second Row ------------------
-
-col3, col4 = st.columns(2, gap="large")
-
 with col3:
-
     st.markdown("""
-    <div style="
-        background:#1d2330;
-        padding:25px;
-        border-radius:15px;
-        border-left:6px solid #AA00FF;
-        margin-bottom:20px;
-    ">
-    <h3>📊 Analytics Dashboard</h3>
-
-    Visualize prediction results with
-    interactive charts.
-
-    <br><br>
-
-    ✅ Pie Chart<br>
-    ✅ Word Cloud<br>
-    ✅ Confidence Analysis
+    <div class="card">
+        <div class="card-title">Vectorizer</div>
+        <div class="card-value">TF-IDF</div>
     </div>
     """, unsafe_allow_html=True)
 
 with col4:
-
     st.markdown("""
-    <div style="
-        background:#1d2330;
-        padding:25px;
-        border-radius:15px;
-        border-left:6px solid #FF6D00;
-        margin-bottom:20px;
-    ">
-    <h3>🕘 Prediction History</h3>
-
-    View previously generated
-    prediction results.
-
-    <br><br>
-
-    ✅ Latest Results<br>
-    ✅ Download CSV<br>
-    ✅ Prediction Summary
+    <div class="card">
+        <div class="card-title">Dataset</div>
+        <div class="card-value">Amazon Reviews</div>
     </div>
     """, unsafe_allow_html=True)
 
 st.divider()
 
-# ======================================================
+# ==========================================
+# APPLICATION MODULES
+# ==========================================
+
+st.markdown(
+"""
+<div class="section-title">
+🚀 Application Modules
+</div>
+""",
+unsafe_allow_html=True
+)
+
+row1_col1, row1_col2 = st.columns(2, gap="large")
+
+with row1_col1:
+
+    st.markdown("""
+    <div class="card">
+
+<h3>✍️ Single Review Prediction</h3>
+
+Predict whether a single product review is
+<b>Genuine</b> or <b>Fake</b> instantly.
+
+<hr>
+
+✅ Instant Prediction<br>
+✅ Confidence Score<br>
+✅ Cleaned Review Text
+
+</div>
+""", unsafe_allow_html=True)
+
+
+with row1_col2:
+
+    st.markdown("""
+    <div class="card">
+
+<h3>📂 Bulk CSV Prediction</h3>
+
+Upload a CSV file containing multiple
+product reviews for batch analysis.
+
+<hr>
+
+✅ Batch Prediction<br>
+✅ Download Results<br>
+✅ Progress Indicator
+
+</div>
+""", unsafe_allow_html=True)
+
+
+# ==========================================
+
+row2_col1, row2_col2 = st.columns(2, gap="large")
+
+with row2_col1:
+
+    st.markdown("""
+    <div class="card">
+
+<h3>📊 Analytics Dashboard</h3>
+
+Visualize prediction results using
+interactive charts and statistics.
+
+<hr>
+
+✅ Pie Charts<br>
+✅ Word Cloud<br>
+✅ Confidence Analysis
+
+</div>
+""", unsafe_allow_html=True)
+
+
+with row2_col2:
+
+    st.markdown("""
+    <div class="card">
+
+<h3>🕘 Prediction History</h3>
+
+View previously generated prediction
+results and download reports.
+
+<hr>
+
+✅ Prediction Logs<br>
+✅ Download CSV<br>
+✅ Summary Statistics
+
+</div>
+""", unsafe_allow_html=True)
+
+st.divider()
+
+
+# ==========================================
 # WORKFLOW & SYSTEM STATUS
-# ======================================================
+# ==========================================
+
+st.markdown(
+"""
+<div class="section-title">
+⚙️ System Workflow
+</div>
+""",
+unsafe_allow_html=True
+)
 
 left, right = st.columns([2, 1], gap="large")
 
@@ -254,79 +280,105 @@ left, right = st.columns([2, 1], gap="large")
 
 with left:
 
-    st.subheader("⚙️ How It Works")
+    st.markdown("""
+    <div class="card">
 
-    st.markdown(
-    """
-<div style="
-background:#1d2330;
-padding:25px;
-border-radius:15px;
-text-align:center;
-font-size:22px;
-">
+<h3>🔄 Prediction Workflow</h3>
 
-📝 Review
+📝 User enters Review
 
 ⬇️
 
-🧹 Cleaning
+🧹 Text Preprocessing
 
 ⬇️
 
-📚 TF-IDF
+📚 TF-IDF Vectorization
 
 ⬇️
 
-🤖 ML Model
+🤖 Machine Learning Model
 
 ⬇️
 
-✅ Prediction
+✅ Genuine / Fake Prediction
 
-</div>
-""",
-    unsafe_allow_html=True
-    )
+    </div>
+    """, unsafe_allow_html=True)
 
 # ---------------- Status ----------------
 
 with right:
 
-    st.subheader("🟢 System Status")
+    st.markdown("""
+    <div class="card">
 
-    st.success("Model Loaded")
+<h3>🟢 System Status</h3>
 
-    st.success("Application Ready")
+✅ Model Loaded
 
-    st.success("Prediction Module Ready")
+✅ Application Ready
 
-    st.success("Analytics Ready")
+✅ Analytics Ready
 
-    st.info("Dataset: Amazon Reviews")
+✅ History Enabled
+
+    </div>
+    """, unsafe_allow_html=True)
 
 st.divider()
 
-# ======================================================
+# ==========================================
 # PROJECT INFORMATION
-# ======================================================
+# ==========================================
 
-st.subheader("ℹ️ Project Information")
-
-c1, c2, c3 = st.columns(3)
-
-with c1:
-    st.metric("Version", "1.0")
-
-with c2:
-    st.metric("Language", "Python")
-
-with c3:
-    st.metric("Framework", "Streamlit")
-
-st.divider()
-
-st.caption(
-    "🛒 Fake Product Review Detection System | Built using Python, Streamlit, Scikit-learn and NLP"
+st.markdown(
+"""
+<div class="section-title">
+📋 Project Information
+</div>
+""",
+unsafe_allow_html=True
 )
 
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.info("""
+**Version**
+
+1.0
+""")
+
+with col2:
+    st.info("""
+**Technology**
+
+Python • Streamlit
+""")
+
+with col3:
+    st.info("""
+**Machine Learning**
+
+TF-IDF + Logistic Regression
+""")
+
+st.divider()
+
+# ==========================================
+# FOOTER
+# ==========================================
+
+st.markdown(
+"""
+<div style="text-align:center;color:#6B7280;font-size:15px;padding-top:10px;">
+
+🛒 <b>Fake Product Review Detection System</b><br>
+
+Developed using Python, Streamlit, Scikit-learn, NLP and Machine Learning.
+
+</div>
+""",
+unsafe_allow_html=True
+)
